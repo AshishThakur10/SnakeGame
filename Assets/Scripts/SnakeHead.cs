@@ -8,7 +8,7 @@ public class SnakeHead : BodyPart
     // Start is called before the first frame update
     void Start()
     {
-        
+        SwipeControls.OnSwipe += SwipeDetection;
     }
 
     // Update is called once per frame
@@ -19,7 +19,7 @@ public class SnakeHead : BodyPart
         UpdatePosition();
         
     }
-    void SwipeDetation(SwipeControls.SwipeDirection direction)
+    void SwipeDetection(SwipeControls.SwipeDirection direction)
     {
        switch (direction)
        {
