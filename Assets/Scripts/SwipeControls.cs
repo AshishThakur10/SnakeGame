@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SwipeControls : MonoBehaviour
 {
-    Vector2 swipeStart;
+    Vector2 swipeStart; // strat of the touch
     Vector2 swipeEnd;
     float minimumDistance = 10;
 
@@ -27,11 +27,11 @@ public class SwipeControls : MonoBehaviour
         {
             if (touch.phase == TouchPhase.Began)
             {
-                swipeStart - touch.position;
+                swipeStart = touch.position;
             }
             else if (touch.phase == TouchPhase.Ended)
             {
-                swipeEnd - touch.position;
+                swipeEnd = touch.position;
                 ProcessSwipe();
             }
         }
@@ -44,7 +44,7 @@ public class SwipeControls : MonoBehaviour
         else if (Input.GetMouseButtonUp(0))
         {
             swipeEnd = Input.mousePosition;
-            ProcessSwipe();
+            ProcessSwipe();         // call the process Swipe function
         }
             
     }
@@ -52,7 +52,7 @@ public class SwipeControls : MonoBehaviour
     void ProcessSwipe()
     {
         float distance = Vector2.Distance(swipeStart, swipeEnd);
-        if ( distace > minimumDistance)
+        if (distance > minimumDistance)
         {
             if (IsVerticalSwipe())
             {
@@ -83,6 +83,11 @@ public class SwipeControls : MonoBehaviour
     {
         float virtical = Mathf.Abs(swipeEnd.y - swipeStart.y);
         float horizontal = Mathf.Abs(swipeEnd.x - swipeStart.x);
+        if (virtical> horizontal)
+        
+            return true;
+            return false;
+        
     }
 
 }
